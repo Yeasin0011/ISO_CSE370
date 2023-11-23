@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
-from django.views.generic import ListView, DetailView, CreateView 
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from .models import Post
 
-from .form import PostForm
+from .form import PostForm, EditForm
 # Create your views here.
 
 # def home(request):
@@ -24,3 +24,10 @@ class postAddview(CreateView):
     template_name='post_add.html'
     # fields=('__all__')
     # fields=('Title', 'Body')
+
+
+class postUpdateview(UpdateView):
+    model=Post
+    form_class=EditForm
+    template_name='update_post.html'
+   
