@@ -10,7 +10,7 @@
 <ul>
 {% for post in object_list %}
     <br/>
-    <li><a href="{% url 'post_details' post.pk %}">{{post.title}}</a> - {{ post.category }} -{{ post.author.first_name }}
+    <li><a href="{% url 'post_details' post.pk %}">{{post.title}}</a> - <a href="{%url 'category' post.category|slugify %}">{{ post.category }}</a> - {{ post.author.first_name }}
     {{ post.author.last_name }}
     {{ post.post_date }}
     <small>

@@ -8,11 +8,15 @@ from datetime import datetime, date
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(args, kwargs)
+        self.id = None
+
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        #return reverse('post_details', args=(str(self.id)))
+        #return reverse('post_details', args=(str(self.id))
         return reverse("Home")
 
 # Create your models here.
@@ -29,5 +33,5 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author) 
     
     def get_absolute_url(self):
-        return reverse('post_details', args=(str(self.id)))
+        return reverse('post_details', args=(self.id,))
         # return reverse("Home")
