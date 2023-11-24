@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import Post
+from .models import Post, Category
 
 from .form import PostForm, EditForm
 
@@ -24,7 +24,12 @@ class postAddview(CreateView):
     template_name='post_add.html'
     # fields=('__all__')
     # fields=('Title', 'Body')
-
+class categoryAddview(CreateView):
+    model= Category
+    #form_class=PostForm
+    template_name='category_add.html'
+    fields=('__all__')
+    # fields=('Title', 'Body')
 
 class postUpdateview(UpdateView):
     model=Post
