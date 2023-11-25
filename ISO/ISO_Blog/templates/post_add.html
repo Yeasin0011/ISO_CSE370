@@ -5,18 +5,23 @@
 {% block content %}
 
 
-
-<h1>Start Posting!!!</h1>
-<br></br>
-
-
 {% if user.is_authenticated %}
+    <h1>Start Posting!!!</h1>
+    <br></br>
+
     <div class='form-group'>
         <form method='POST'>
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-primary">Post</button>
     </div>
+
+    <script>
+        var name= "{{ user.id}}";
+        document.getElementById("number").value = name;
+    </script>
+    
+
 {% else %}
 <br/><br/><br/>
 <h3>Ahm Ahm Ahm, anything you are looking for?</h3>

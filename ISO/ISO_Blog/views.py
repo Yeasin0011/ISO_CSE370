@@ -52,7 +52,7 @@ class categoryAddview(CreateView):
     model= Category
     #form_class=PostForm
     template_name='category_add.html'
-    fields=('__all__')
+    fields='__all__'
     # fields=('Title', 'Body')
 
 class postUpdateview(UpdateView):
