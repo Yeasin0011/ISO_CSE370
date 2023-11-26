@@ -33,10 +33,24 @@ post author: {{ post.author.id }}
 <form action= "{% url 'like_post' post.pk %}"
 method= "POST">
     {% csrf_token %}
-    <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-success btn-sm"> Like </button> - {{ total_likes }} Likes
+
+    <!-- Using certian conditional logics -->
+
+    {% if user.is_authenticated %}    
+        {% if liked %}
+            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-danger btn-sm"> Disike </button>         
+        {% else %}
+            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-success btn-sm"> Like </button>  
+        {% endif %}
+    {% else %}
+        <h3> <a href="{% url 'login'%}">Login</a> to like </h3>
+    {% endif %}
+        - {{ total_likes }} Likes
+
+    </form>
 
 
-</form>
+    
 
 
 
