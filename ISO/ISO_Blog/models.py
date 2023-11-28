@@ -24,6 +24,10 @@ class Category(models.Model):
 class user_profile(models.model):
     user = models.OneToOneField(User , null=True , on_delete=models.CASCADE)
     bio = models.TimeField()
+    profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
+    Facebook_url =models.CharField(max_length=255,null=True, blank=True)
+    Instagram_url =models.CharField(max_length=255,null=True, blank=True)
+    Twitter_url =models.CharField(max_length=255,null=True, blank=True)
 
     def __str__(self):
         return str(self.user)
