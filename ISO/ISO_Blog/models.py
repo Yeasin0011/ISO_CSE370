@@ -19,7 +19,13 @@ class Category(models.Model):
         #return reverse('post_details', args=(str(self.id))
         return reverse("Home")
 
-# Create your models here.
+class user_profile(models.model):
+    user = models.OneToOneField(User , null=True , on_delete=models.CASCADE)
+    bio = models.TimeField()
+
+    def __str__(self):
+        return str(self.user)
+
 
 class Post(models.Model):
     title=models.CharField(max_length=255)
