@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ post.title_tag}}{% endblock %}
 
 
@@ -59,7 +60,11 @@ method= "POST">
 <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-2">
+        {% if post.author.profile.profile_picture %}
         <img src="{{ post.author.profile.profile_picture.url }}" class="img-fluid rounded-start" alt="...">
+        {% else %}
+        <img src="%static 'theblog/images/default_pic.jpg'" alt="..">
+        {% endif %}
       </div>
       <div class="col-md-10">
         <div class="card-body">
@@ -68,6 +73,7 @@ method= "POST">
             {{ post.author.last_name }}
           </h5>
           <p class="small text-muted">
+            <a href="{% url 'Show_Profile_Page' post.author.Profile.ID %}">Profile Page</a> |
             <a href="{{ post.author.profile.facebook_url }}">Facebook</a> |
             <a href="{{ post.author.profile.twitter_url }}">Twitter</a> |
             <a href="{{ post.author.profile.instagram_url }}">Instagram</a> |
