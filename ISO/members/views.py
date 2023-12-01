@@ -45,3 +45,4 @@ class ShowProfilePageView(DetailView):
 
         context["page_user"] = page_user
         return context
+
