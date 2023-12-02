@@ -55,7 +55,7 @@ method= "POST">
 <div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-2">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+      <img src="{{ post.author.profile.profile_pic.url }}" class="img-fluid rounded-start">
     </div>
     <div class="col-md-10">
       <div class="card-body">
@@ -63,7 +63,9 @@ method= "POST">
           {{ post.author.first_name }} 
           {{ post.author.last_name }}
         </h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text">
+          {{ post.author.profile.bio }}
+        </p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
     </div>
