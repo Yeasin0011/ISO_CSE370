@@ -9,7 +9,7 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model=Post
-        fields=('title', 'title_tag', 'author', 'category' , 'body', 'snippet', 'header_image')
+        fields=('title', 'title_tag', 'author', 'category' , 'body')
 
         widgets={
             'title':forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tell a interesting story'}),
@@ -18,19 +18,17 @@ class PostForm(forms.ModelForm):
             # 'author':forms.Select(attrs={'class': 'form-control', }),
             'category': forms.Select(choices=choice_list,attrs={'class': 'form-control', }),
             'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Open your heart out!'}), 
-            'snippet':forms.Textarea(attrs={'class': 'form-control'}),
 
         }
 
 class EditForm(forms.ModelForm):
     class Meta:
         model=Post
-        fields=('title', 'title_tag', 'body','snippet')
+        fields=('title', 'title_tag', 'body')
 
         widgets={
             'title':forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Name a Interesting Title!'}), 
             'title_tag':forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Apply a meaningful tag'}), 
-            'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Open your heart out!'}),
-            'snippet':forms.Textarea(attrs={'class': 'form-control'}),  
+            'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Open your heart out!'}), 
 
         }
