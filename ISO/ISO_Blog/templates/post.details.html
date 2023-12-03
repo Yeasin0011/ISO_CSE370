@@ -55,15 +55,15 @@ method= "POST">
 <div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-2">
-      <p>Profile Picture</p>
+        <img src="{%static 'theblog/images/default_pic.jpg' %}" class="card-img">
     </div>
     <div class="col-md-10">
       <div class="card-body">
         <h5 class="card-title">
-          Profile name <picture></picture>
+          {{ post.author.first_name }} 
+          {{ post.author.last_name }}
         </h5>
         <p class="card-text">
-          bio
         </p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
       </div>
