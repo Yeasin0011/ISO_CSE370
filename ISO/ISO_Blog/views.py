@@ -2,7 +2,7 @@ from django.shortcuts import render,get_object_or_404, HttpResponse
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import Post, Category
+from .models import Post, Category, Profile
 
 from .form import PostForm, EditForm
 
@@ -62,7 +62,10 @@ def SearchView(request):
     else:    
         allPostsTitle= Post.objects.filter(title__icontains=query) 
         allPostsContents= Post.objects.filter(body__icontains=query)
-        allPosts= allPostsTitle.union(allPostsContents)
+        allPostsAuthor= Post.objects.filter(author__username__icontains=query)
+        allPostsCategory= Post.objects.filter(category__icontains=query)
+        allPostsSnippet= Post.objects.filter(snippet__icontains=query)
+        allPosts= allPostsTitle.union(allPostsContents, allPostsCategory, allPostsSnippet)
 
 
     # if allPosts.count()==0:
