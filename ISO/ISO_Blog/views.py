@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, HttpResponse
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -9,6 +9,8 @@ from .form import PostForm, EditForm
 from django.urls import reverse_lazy, reverse
 
 from django.http import HttpResponseRedirect
+
+from django.contrib import messages
 
 #just regular functional view enough for that
 
@@ -48,6 +50,27 @@ def CategoryListView(request):
 def CategoryView(request, cats):
     category_posts = Post.objects.filter(category=cats.replace('-', ' '))
     return render(request, 'categories.html', {'cats': cats.title().replace('-', ' '), 'category_posts':category_posts})
+
+
+
+def SearchView(request):
+    query=request.GET['searching']
+    
+    
+    if len(query)>50: #for acheiving protection against large query sets 
+        allPosts= Post.objects.none()    
+    else:    
+        allPostsTitle= Post.objects.filter(title__icontains=query) 
+        allPostsContents= Post.objects.filter(body__icontains=query)
+        allPosts= allPostsTitle.union(allPostsContents)
+
+
+    # if allPosts.count()==0:
+    #     messages.warning(request, 'Please fill the form correctly')  
+
+    return render(request, 'search.html', {'allPosts': allPosts, 'query': query}) 
+
+
 
 
 class postDetailview(DetailView):
