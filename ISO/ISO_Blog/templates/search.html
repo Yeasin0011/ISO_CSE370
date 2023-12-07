@@ -17,7 +17,15 @@
     <li>Try relevant keywords</li>
     </ul>      
 
-{% endif %}    
+{% endif %}
+
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert">
+        The search was blank.
+    </div>
+
+    {% endif %}
 
     <ul>
     {% for post in allPosts %}

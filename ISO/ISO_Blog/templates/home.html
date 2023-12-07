@@ -10,23 +10,38 @@
 <ul>
 {% for post in object_list %}
     <br/>
-    <span class="border border-dark">
-    <li><a href="{% url 'post_details' post.pk %}">{{post.title}}</a> - <a href="{%url 'category' post.category|slugify %}">
-    {{ post.category }}</a> - {{ post.author.first_name }}
-    {{ post.author.last_name }}, 
-    {{ post.post_date }}
-    <small>
-        {% if user.is_authenticated %}
-            {% if user.id == post.author.id %}
-                - <a href="{% url 'update_post' post.pk %}">(Edit)</a>
+    <div id="box" class="border shadow-lg">
+        <style>
+            .box
+            {
+             background: #000000;
 
-                <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
-            {% endif %}    
-        {% endif %}
+            }
+        </style>    
+        <li><h3><a href="{% url 'post_details' post.pk %}">{{post.title}}</a> in <a href="{%url 'category' post.category|slugify %}">
+        <h5>{{ post.category }}</h5></a></h3>
+        by <b>{{ post.author.first_name }}
+        {{ post.author.last_name }}</b> </br>
         
-    </small><br/> 
-    {{post.snippet}}
-    </span></li>
+        Posted on: {{ post.post_date }}
+        <small>
+            {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
+                    - <a href="{% url 'update_post' post.pk %}">(Edit)</a>
+
+                    <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+                {% endif %}    
+            {% endif %}
+            
+        </small><br/><I><b>
+         
+            {% if post.header_image %}
+            <img src='{{ post.header_image.url }}'></br>
+            {% endif %}
+            {{post.snippet}}
+        </I></b>
+    </li>
+    </div>
     
 {% endfor %} 
 </ul>
