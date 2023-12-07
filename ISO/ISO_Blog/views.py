@@ -60,6 +60,9 @@ def SearchView(request):
     query=request.GET['searching']
     
     
+    if len(query)<1:
+        return render(request, 'search.html', {'error': True})
+
     if len(query)>50: #for acheiving protection against large query sets 
         allPosts= Post.objects.none()    
     else:    
@@ -73,7 +76,7 @@ def SearchView(request):
         allPosts= allPostsTitle.union(allPostsContents, allPostsCategory, allPostsSnippet, allPostsAuthor)
 
 
-    # if allPosts.count()==0:
+    # if allPosts.count()==0:z
     #     messages.warning(request, 'Please fill the form correctly')  
 
     return render(request, 'search.html', {'allPosts': allPosts, 'query': query}) 
