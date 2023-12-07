@@ -58,7 +58,7 @@ def CategoryView(request, cats):
 
 def SearchView(request):
     query=request.GET['searching']
-    
+    # post=Post.objects.order_by("-post_date")
     
     if len(query)<1:
         return render(request, 'search.html', {'error': True})
@@ -79,7 +79,7 @@ def SearchView(request):
     # if allPosts.count()==0:
     #     messages.warning(request, 'Please fill the form correctly')  
 
-    return render(request, 'search.html', {'allPosts': allPosts, 'query': query}) 
+    return render(request, 'search.html', {'allPosts': allPosts, 'query': query, }) 
 
 
 

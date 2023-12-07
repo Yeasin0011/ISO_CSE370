@@ -59,22 +59,15 @@
                   <a class="nav-link" href="{% url 'add_post'%}"><b>Add Post</b></a>
                 </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'add_category'%}"><b>Add Category</b></a>
-                </li>
                 
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'edit_profile'%}"><b>Edit Profile</b></a>
                 </li>
-
-
+                
+                
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout'%}"><b>Logout</b></a>
                 </li>
-  
-
-
-
               {% else %}
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'register'%}"><b>Register</b></a>
@@ -83,8 +76,13 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'login'%}"><b>Login</b></a>
                 </li>
+              {% endif %} 
 
-              {% endif %}
+              {% if user.is_superuser %}  
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'add_category'%}"><b>Add Category</b></a>
+                </li>
+              {% endif %} 
 
 
 
