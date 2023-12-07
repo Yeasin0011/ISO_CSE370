@@ -27,12 +27,12 @@
         <small>
             {% if user.is_authenticated %}
                 {% if user.id == post.author.id or user.is_superuser %}
-                    - <a href="{% url 'update_post' post.pk %}">(Edit)</a>
+                    - <a href="{% url 'update_post' post.pk %}"><button type="button" class="btn btn-primary btn-sm">Edit</button></a>
 
-                    <a href="{% url 'delete_post' post.pk %}">(Delete)</a>
+                    <a href="{% url 'delete_post' post.pk %}"><button type="button" class="btn btn-primary btn-sm">Delete</button></a>
                 {% endif %}    
             {% endif %}
-            
+        </br>   
         </small><br/><I><b>
          
             {% if post.header_image %}

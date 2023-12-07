@@ -5,9 +5,9 @@
 {% block content %}
 
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated or user.is_superuser%}
 
-    {% if user.id == post.author.id %}
+    {% if user.id == post.author.id or user.is_superuser %}
         <h1>Edit Post...</h1>
         <br></br>
 
