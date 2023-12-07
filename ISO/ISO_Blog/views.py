@@ -12,6 +12,9 @@ from django.http import HttpResponseRedirect
 
 from django.contrib import messages
 
+from django.db.models import Value as V
+
+from django.db.models.functions import Concat
 #just regular functional view enough for that
 
 def LikeView(request, pk): # Pk is the primary key of the post itself, request contains persons userid if they are logged in
@@ -63,6 +66,8 @@ def SearchView(request):
         allPostsTitle= Post.objects.filter(title__icontains=query) 
         allPostsContents= Post.objects.filter(body__icontains=query)
         allPostsAuthor= Post.objects.filter(author__username__icontains=query)
+        # fname=Post.objects.filter(author_first_name__icontains=query)   
+        # lname=Post.objects.filter(author_last_name__icontains=query)    
         allPostsCategory= Post.objects.filter(category__icontains=query)
         allPostsSnippet= Post.objects.filter(snippet__icontains=query)
         allPosts= allPostsTitle.union(allPostsContents, allPostsCategory, allPostsSnippet, allPostsAuthor)
