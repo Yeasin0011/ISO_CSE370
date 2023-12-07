@@ -65,7 +65,7 @@ def SearchView(request):
         allPostsAuthor= Post.objects.filter(author__username__icontains=query)
         allPostsCategory= Post.objects.filter(category__icontains=query)
         allPostsSnippet= Post.objects.filter(snippet__icontains=query)
-        allPosts= allPostsTitle.union(allPostsContents, allPostsCategory, allPostsSnippet)
+        allPosts= allPostsTitle.union(allPostsContents, allPostsCategory, allPostsSnippet, allPostsAuthor)
 
 
     # if allPosts.count()==0:
