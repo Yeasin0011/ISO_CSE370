@@ -69,14 +69,14 @@ def SearchView(request):
         allPostsTitle= Post.objects.filter(title__icontains=query) 
         allPostsContents= Post.objects.filter(body__icontains=query)
         allPostsAuthor= Post.objects.filter(author__username__icontains=query)
-        # fname=Post.objects.filter(author_first_name__icontains=query)   
-        # lname=Post.objects.filter(author_last_name__icontains=query)    
+        fname=Post.objects.filter(author__first_name__icontains=query)   
+        lname=Post.objects.filter(author__last_name__icontains=query)    
         allPostsCategory= Post.objects.filter(category__icontains=query)
         allPostsSnippet= Post.objects.filter(snippet__icontains=query)
-        allPosts= allPostsTitle.union(allPostsContents, allPostsCategory, allPostsSnippet, allPostsAuthor)
+        allPosts= allPostsTitle.union(allPostsContents, allPostsCategory, allPostsSnippet, allPostsAuthor, fname, lname)
 
 
-    # if allPosts.count()==0:z
+    # if allPosts.count()==0:
     #     messages.warning(request, 'Please fill the form correctly')  
 
     return render(request, 'search.html', {'allPosts': allPosts, 'query': query}) 
