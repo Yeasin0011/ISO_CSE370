@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}{{ post.title_tag}}{% endblock %}
 
 
@@ -56,15 +57,15 @@ method= "POST">
     <br>
 
 
-    <div class="card mb-3">
+    <div class="card mb-3" style="background-color: #D298DB;">
         <div class="row g-0">
           <div class="col-md-2">
-            <img src="{{  post.author.profile.profile_pic.url }}" class="card-img" width="200" height="180" alt="Profile Picture">
+              <img src="{{  post.author.profile.profile_pic.url }}" 
+              class="card-img" width="200" height="180" alt="Profile Picture">
           </div>
           <div class="col-md-10">
             <div class="card-body">
               <h5 class="card-title">
-                Profile Name :
                 {{ post.author.first_name }} 
                 {{ post.author.last_name }}
               </h5>
@@ -72,6 +73,8 @@ method= "POST">
                 {{  post.author.profile.bio }}
               </p>
               <p class="card-text">
+                <a href="{% url 'show_profile_page' post.author.profile.id %}"> Profile Page </a>
+                <br>
                 <a href="{{  post.author.profile.fb_url }}"> Facebook |</a>
                 <a href="{{  post.author.profile.fb_url }}"> Instagram |</a>
                 <a href="{{  post.author.profile.fb_url }}"> Twitter |</a>
