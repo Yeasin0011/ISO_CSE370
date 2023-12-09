@@ -6,7 +6,7 @@
 
 
 {% if user.is_authenticated %}
-    <h1>Edit Profile</h1>
+    <h1>Edit Profile Page</h1>
     <br></br>
 
     <div class='form-group'>
@@ -15,11 +15,6 @@
             {{ form.as_p }}
             <button class="btn btn-primary">Update Profile Page</button>
     </div>
-
-    <script>
-        var name= "{{ user.id}}";
-        document.getElementById("number").value = name;
-    </script>
     
 
 {% else %}
