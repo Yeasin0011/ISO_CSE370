@@ -59,10 +59,18 @@
                   <a class="nav-link" href="{% url 'add_post'%}"><b>Add Post</b></a>
                 </li>
 
-                
+                       
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'edit_profile'%}"><b>Edit Profile</b></a>
+                  <a class="nav-link" href="{% url 'edit_profile'%}"><b>Edit Settings</b></a>
                 </li>
+                {% if user.profile.id %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}"><b>My Profile</b></a>
+                  </li>
+                {% else %}
+                  <li class="nav-item">
+                  <a class="nav-link" href="{% url 'create_profile_page'%}"><b>Create Profile</b></a>
+                {% endif %}
                 
                 
                 <li class="nav-item">
@@ -82,7 +90,8 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'add_category'%}"><b>Add Category</b></a>
                 </li>
-              {% endif %} 
+              {% endif %}
+             
 
 
 

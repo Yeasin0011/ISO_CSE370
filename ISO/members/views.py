@@ -14,6 +14,25 @@ from .forms import SignUpForm, EditProfileForm
 
 from ISO_Blog.models import Profile
 
+# Create your views here.
+
+class CreateProfilePageView(generic.CreateView):
+    model = Profile
+    template_name = 'registration/create_user_profile.html'
+    fields = '__all__'
+    success_url=reverse_lazy('home')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class EditProfilePageView(generic.UpdateView):
+    model = Profile
+    template_name = 'registration/edit_profile_page.html'
+    fields = ['bio', 'profile_pic', 'website_url', 'facebook_url', 'twitter_url', 'instagram_url']
+    success_url=reverse_lazy('home')
+
+
 class ShowProfilePageView(DetailView):
     model = Profile
     template_name = 'registration/user_profile.html'
