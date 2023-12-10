@@ -5,6 +5,7 @@ from .views import Homeview, postDetailview, postAddview, postUpdateview, postDe
 
 
 
+
 urlpatterns = [
     # path('', views.home, name='home'),
     path('', Homeview.as_view(), name='Home'), 
@@ -17,5 +18,6 @@ urlpatterns = [
     path('category-list/',CategoryListView, name='category-list' ),
     path('like/<int:pk>', LikeView, name='like_post'),
     path('search', SearchView, name='search'),
+    # path('admin', )
     
 ]
