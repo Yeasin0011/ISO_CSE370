@@ -18,7 +18,7 @@
 
             }
         </style>    
-        <li><h3><a href="{% url 'post_details' post.pk %}">{{post.title}}</a> in <a href="{%url 'category' post.category|slugify %}">
+        <li class="px-5 my-2"><h3><a href="{% url 'post_details' post.pk %}">{{post.title}}</a> in <a href="{%url 'category' post.category|slugify %}">
         <h5>{{ post.category }}</h5></a></h3>
         by <b>{{ post.author.first_name }}
         {{ post.author.last_name }}</b> </br>
@@ -36,7 +36,7 @@
         </small><br/><I><b>
          
             {% if post.header_image %}
-            <img src='{{ post.header_image.url }}'></br>
+            <img class="pb-2" src='{{ post.header_image.url }}'></br>
             {% endif %}
             {{post.snippet}}
         </I></b>
