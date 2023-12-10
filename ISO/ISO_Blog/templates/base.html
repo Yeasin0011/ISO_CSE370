@@ -53,30 +53,50 @@
 
 
             
-
-              {% if user.is_authenticated %}
-
-              <div class="btn-group">
+              
+              <!-- <div class="btn-group">
                 <button type="button" class="btn btn-success"> Settings </button>
-                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split d-flex ml-auto mb-2 mb-lg-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu">
                   <li class="nav-item">
-                  {% if user.profile.id %}
+                    {% if user.profile.id %}
+                    <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}"><b>Edit Profile Page</b></a>
+                    <a class="nav-link" href="{% url 'edit_profile'%}"><b>Account Settings</b></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}"><b>My Profile</b></a>
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_profile_page'%}"><b>Create Profile</b></a>
+                    {% endif %}
+                  </div>
+                -->
+                
+              {% if user.is_authenticated %}
+               <div class="dropdown">
+                <button class="btn background-color:#d298db btn-outline-dark " type="button" data-toggle="dropdown" aria-expanded="false">
+                  Settings
+                </button>
+                <div class="dropdown-menu">
+                  <li class="nav-item">
+                    {% if user.profile.id %}
                       <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}"><b>Edit Profile Page</b></a>
                       <a class="nav-link" href="{% url 'edit_profile'%}"><b>Account Settings</b></a>
                     </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}"><b>My Profile</b></a>
-                    </li>
-                  {% else %}
                     <li class="nav-item">
-                    <a class="nav-link" href="{% url 'create_profile_page'%}"><b>Create Profile</b></a>
-                  {% endif %}
+                      <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}"><b>My Profile</b></a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'create_profile_page'%}"><b>Create Profile</b></a>
+                    </li>
+                    {% endif %}
+                </div>
               </div>
-             
-
+              
                 
                 
                 <li class="nav-item">
@@ -84,22 +104,7 @@
                 </li>
 
                        
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="{% url 'edit_profile'%}"><b>Account Settings</b></a>
-                </li> -->
-                <!-- {% if user.profile.id %}
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}"><b>Edit Profile Page</b></a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}"><b>My Profile</b></a>
-                  </li>
-                {% else %}
-                  <li class="nav-item">
-                  <a class="nav-link" href="{% url 'create_profile_page'%}"><b>Create Profile</b></a>
-                {% endif %}
-                 -->
-                
+   
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout'%}"><b>Logout</b></a>
                 </li>
