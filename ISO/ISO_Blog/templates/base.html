@@ -55,15 +55,39 @@
             
 
               {% if user.is_authenticated %}
+
+              <div class="btn-group">
+                <button type="button" class="btn btn-success"> Settings </button>
+                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <li class="nav-item">
+                  {% if user.profile.id %}
+                      <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}"><b>Edit Profile Page</b></a>
+                      <a class="nav-link" href="{% url 'edit_profile'%}"><b>Account Settings</b></a>
+                    </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'show_profile_page' user.profile.id %}"><b>My Profile</b></a>
+                    </li>
+                  {% else %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create_profile_page'%}"><b>Create Profile</b></a>
+                  {% endif %}
+              </div>
+             
+
+                
+                
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'add_post'%}"><b>Add Post</b></a>
                 </li>
 
                        
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'edit_profile'%}"><b>Acount Settings</b></a>
-                </li>
-                {% if user.profile.id %}
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="{% url 'edit_profile'%}"><b>Account Settings</b></a>
+                </li> -->
+                <!-- {% if user.profile.id %}
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'edit_profile_page' user.profile.id %}"><b>Edit Profile Page</b></a>
                 </li>
@@ -74,7 +98,7 @@
                   <li class="nav-item">
                   <a class="nav-link" href="{% url 'create_profile_page'%}"><b>Create Profile</b></a>
                 {% endif %}
-                
+                 -->
                 
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'logout'%}"><b>Logout</b></a>
@@ -131,6 +155,7 @@
     
     
     
+
     
     
     
