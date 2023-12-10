@@ -20,7 +20,7 @@ class CreateProfilePageView(generic.CreateView):
     model = Profile
     template_name = 'registration/create_user_profile.html'
     fields = '__all__'
-    success_url=reverse_lazy('home')
+    success_url=reverse_lazy('Home')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
