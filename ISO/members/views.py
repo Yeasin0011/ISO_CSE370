@@ -10,7 +10,7 @@ from django.contrib.auth.views import PasswordChangeView
 
 from django.urls import reverse_lazy
 
-from .forms import SignUpForm, EditProfileForm
+from .forms import SignUpForm, EditProfileForm, PasswordChangingForm
 
 from ISO_Blog.models import Profile
 
@@ -44,8 +44,11 @@ class ShowProfilePageView(DetailView):
     
 
 class PasswordsChangeView(PasswordChangeView):
-    form_class= PasswordChangeForm
-    success_url=reverse_lazy('home')
+    form_class= PasswordChangingForm
+    success_url=reverse_lazy('password_success')
+def password_success(request):
+    return render(request, "registration/password_success.html",{})
+
 
 
 
